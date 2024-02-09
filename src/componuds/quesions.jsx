@@ -39,7 +39,7 @@ function Q() {
             </div>
             <div className="controls">
                 <button className="red" onClick={() => setQno(qno === 0 ? data.length - 1 : qno - 1)}>Prev</button>
-                <button className="green" onClick={() => setQno(qno === data.length - 1 ? 0 : qno + 1)}>Next</button>
+                <button className="green" onClick={() => setQno(qno === data.length - 1 ? navigate("/result") : qno + 1)}>Next</button>
                 <button className="red" onClick={handleEndClick}>End</button>
             </div>
         </div>
