@@ -24,8 +24,6 @@ function Q() {
         console.log("Data to be passed:", datha);
         navigate("/result", { state: datha } );
     };
-    
-
     return (
         <div className="que">
             <h1>Question</h1>
@@ -38,12 +36,13 @@ function Q() {
                 <button className="op" onClick={() => checker(data[qno].optionD)}>{data[qno].optionD}</button>
             </div>
             <div className="controls">
-                <button className="red" onClick={() => setQno(qno === 0 ? data.length - 1 : qno - 1)}>Prev</button>
-                <button className="green" onClick={() => setQno(qno === data.length - 1 ? navigate("/result") : qno + 1)}>Next</button>
+                <button className="red" onClick={() => setQno(qno === 0 ? 0 : qno - 1)}>Prev</button>
+                <button className="green" onClick={() => {setQno(qno === data.length - 1 ? navigate("/result",{state:datha}) : qno + 1)
+                }
+                }>Next</button>
                 <button className="red" onClick={handleEndClick}>End</button>
             </div>
         </div>
     );
 }
-
 export default Q;
