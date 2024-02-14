@@ -14,16 +14,27 @@ function Q() {
             alert("Correct");
             setused([...used,qno])
             setDatha({ ...datha, correct: datha.correct + 1, attempted: datha.attempted + 1 });
+            next()
+
         } else if (!used.includes(qno)) {
+            alert("Wrong")
             setused([...used,qno])
             setDatha({ ...datha, wrong: datha.wrong + 1, attempted: datha.attempted + 1 });
+            next()
         }
+    }
+    const handleEClick=()=>{
+        alert("last quesion")
+        navigate("/result",{state:datha})
     }
 
     const handleEndClick = () => {
         console.log("Data to be passed:", datha);
         navigate("/result", { state: datha } );
     };
+    const next=()=>{
+        setQno(qno === data.length - 1 ? handleEClick(): qno + 1)
+    }
     return (
         <div className="que">
             <h1>Question</h1>
@@ -37,9 +48,7 @@ function Q() {
             </div>
             <div className="controls">
                 <button className="red" onClick={() => setQno(qno === 0 ? 0 : qno - 1)}>Prev</button>
-                <button className="green" onClick={() => {setQno(qno === data.length - 1 ? navigate("/result",{state:datha}) : qno + 1)
-                }
-                }>Next</button>
+                <button className="green" onClick={next}>Next</button>
                 <button className="red" onClick={handleEndClick}>End</button>
             </div>
         </div>
